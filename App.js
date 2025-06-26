@@ -1,20 +1,19 @@
-
 import React from 'react';
-import { SafeAreaView, Alert } from 'react-native';
-import BotonGeneral from './componentes/BotonGeneral';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+import InicioMayor from './vistas/InicioMayor';
+import miBienestar from './vistas/miBienestar'; // ¡ojo! respetá mayúsculas/minúsculas según lo escribiste
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
-  const handlePress = () => {
-    Alert.alert('¡Pulsaste el boton de llamada! :)');
-  };
-
   return (
-    <SafeAreaView style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <BotonGeneral
-        imageSource={require('./imagenes/telefono.png')} 
-        onPress={handlePress}
-        size={80}
-      />
-    </SafeAreaView>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="InicioMayor">
+        <Stack.Screen name="InicioMayor" component={InicioMayor} />
+        <Stack.Screen name="miBienestar" component={miBienestar} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }

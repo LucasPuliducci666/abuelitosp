@@ -1,9 +1,20 @@
 import React from 'react';
 import { TouchableOpacity, Image, StyleSheet } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
-const BotonGeneral = ({ imageSource, onPress, size = 50 }) => {
+const BotonGeneral = ({ imageSource, size = 50, goBack = false, to = null }) => {
+  const navigation = useNavigation();
+
+  const handlePress = () => {
+    if (goBack) {
+      navigation.goBack();
+    } else if (to) {
+      navigation.navigate(to);
+    }
+  };
+
   return (
-    <TouchableOpacity onPress={onPress} style={[styles.button, { width: size, height: size }]}>
+    <TouchableOpacity onPress={handlePress} style={[styles.button, { width: size, height: size }]}>
       <Image source={imageSource} style={styles.image} resizeMode="contain" />
     </TouchableOpacity>
   );
