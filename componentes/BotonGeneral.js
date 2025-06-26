@@ -1,21 +1,27 @@
-import { StyleSheet, Text, View, Image } from 'react-native'
-import React from 'react'
+import React from 'react';
+import { TouchableOpacity, Image, StyleSheet } from 'react-native';
 
-const BotonGeneral = () => {
+const BotonGeneral = ({ imageSource, onPress, size = 50 }) => {
   return (
-    <View>
-        <Text>BotonGeneral</Text>
-        <Image
-            source={{
-                uri: 'imagenes\telefono.png'
-            }}
-        />
-    </View>
-  )
-}
-
-export default BotonGeneral
+    <TouchableOpacity onPress={onPress} style={[styles.button, { width: size, height: size }]}>
+      <Image source={imageSource} style={styles.image} resizeMode="contain" />
+    </TouchableOpacity>
+  );
+};
 
 const styles = StyleSheet.create({
-    
-})
+  button: {
+    backgroundColor: '#eee',
+    borderRadius: 10,
+    padding: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+    elevation: 2,
+  },
+  image: {
+    width: '100%',
+    height: '100%',
+  },
+});
+
+export default BotonGeneral;

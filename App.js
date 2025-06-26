@@ -1,23 +1,20 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+
+import React from 'react';
+import { SafeAreaView, Alert } from 'react-native';
 import BotonGeneral from './componentes/BotonGeneral';
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <BotonGeneral></BotonGeneral>
-      <StatusBar style="auto" />
+  const handlePress = () => {
+    Alert.alert('¡Pulsaste el boton de llamada! :)');
+  };
 
-    </View>
+  return (
+    <SafeAreaView style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <BotonGeneral
+        imageSource={require('./imagenes/telefono.png')} 
+        onPress={handlePress}
+        size={80}
+      />
+    </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#ffffff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
