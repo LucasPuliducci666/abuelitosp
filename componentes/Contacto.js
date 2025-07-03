@@ -1,20 +1,17 @@
 import React from 'react';
-import { TouchableOpacity, Image, StyleSheet } from 'react-native';
+import { TouchableOpacity, Image, StyleSheet, Text} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-const BotonGeneral = ({ imageSource, size = 50, goBack = false, to = null }) => {
+const Contacto = ({texto, imageSource}) => {
   const navigation = useNavigation();
 
   const handlePress = () => {
-    if (goBack) {
-      navigation.goBack();
-    } else if (to) {
-      navigation.navigate(to);
-    }
+    
   };
 
   return (
     <TouchableOpacity onPress={handlePress} style={[styles.button, {}]}>
+      <Text style={styles.text}> Numero de: {texto} </Text>
       <Image source={imageSource} style={styles.image} resizeMode="contain" />
     </TouchableOpacity>
   );
@@ -22,20 +19,29 @@ const BotonGeneral = ({ imageSource, size = 50, goBack = false, to = null }) => 
 
 const styles = StyleSheet.create({
   button: {
-    width: '30%',
-    height: '15%',
+    width: '80%',
+    height: 60,
     backgroundColor: '#AD54E0',
     borderRadius: 10,
-    padding: 15,
-    justifyContent: 'center',
+    padding: 5,
+    marginTop: 15,
+    flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'space-between', 
     elevation: 1,
   },
   image: {
-    margin: 15,
-    width: '100%',
+    width: '20%',
     height: '100%',
+    borderWidth: 1,
+    borderColor: 'red',
+    borderStyle: 'solid'
   },
+  text: {
+    fontSize: 16,
+    color: 'white',
+    fontFamily: 'Arial',
+  }
 });
 
-export default BotonGeneral;
+export default Contacto;

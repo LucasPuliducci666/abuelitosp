@@ -7,7 +7,7 @@ export default function InicioMayor() {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       <Text>Pantalla Principal</Text>
-      <BotonGeneral imageSource={arrowImage} to="miBienestar" />
+      <BotonGeneral imageSource={arrowImage} to="MiBienestar" />
     </View>
   );
 }
