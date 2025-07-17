@@ -14,7 +14,7 @@ const BotonGeneral = ({ imageSource, size = 50, goBack = false, to = null }) => 
   };
 
   return (
-    <TouchableOpacity onPress={handlePress} style={[styles.button, { width: size, height: size }]}>
+    <TouchableOpacity onPress={handlePress} style={[styles.button, {}]}>
       <Image source={imageSource} style={styles.image} resizeMode="contain" />
     </TouchableOpacity>
   );
@@ -22,14 +22,17 @@ const BotonGeneral = ({ imageSource, size = 50, goBack = false, to = null }) => 
 
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: '#eee',
+    width: '30%',
+    height: '15%',
+    backgroundColor: '#AD54E0',
     borderRadius: 10,
-    padding: 10,
+    padding: 15,
     justifyContent: 'center',
     alignItems: 'center',
-    elevation: 2,
+    elevation: 1,
   },
   image: {
+    margin: 15,
     width: '100%',
     height: '100%',
   },
