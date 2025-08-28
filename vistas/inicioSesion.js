@@ -39,10 +39,6 @@ export default function inicioSecion({ navigation }) {
     ¿Olvidaste tu contraseña? Hace <Text style={{ fontStyle: 'italic' ,}}>click</Text> aquí.
   </Text>
 </TouchableOpacity>
-
-
-
-
       <TouchableOpacity style={styles.button} onPress={handleLogin}>
         <Text style={styles.buttonText}>Iniciar</Text>
       </TouchableOpacity>
