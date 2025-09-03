@@ -6,7 +6,8 @@ import RecuperarContrasena from './vistas/RecuperarContrasena';
 import inicioSesion from './vistas/inicioSesion';
 import registroUsuario from './vistas/registroUsuario';
 import InicioMayor from './vistas/InicioMayor';
-import miBienestar from './vistas/miBienestar'; // ¡ojo! respetá mayúsculas/minúsculas según lo escribiste
+import InicioResponsable from './vistas/InicioResponsable';
+import miBienestar from './vistas/miBienestar';
 
 const Stack = createNativeStackNavigator();
 
@@ -17,6 +18,7 @@ export default function App() {
         <Stack.Screen name="inicioSesion" component={inicioSesion} />
         <Stack.Screen name="registroUsuario" component={registroUsuario} />
         <Stack.Screen name="InicioMayor" component={InicioMayor} />
+        <Stack.Screen name="InicioResponsable" component={InicioResponsable} />
         <Stack.Screen name="miBienestar" component={miBienestar} />
         <Stack.Screen name="RecuperarContrasena" component={RecuperarContrasena} />
       </Stack.Navigator>
