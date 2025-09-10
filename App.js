@@ -1,4 +1,3 @@
-import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
@@ -9,8 +8,8 @@ import InicioMayor from './vistas/InicioMayor';
 import InicioResponsable from './vistas/InicioResponsable';
 import MiBienestar from './vistas/MiBienestar';
 import Mapa from './vistas/Mapa';
-import telefMayor from './vistas/telefmayor';
-import contactoformu from './vistas/contactoformu';
+import TelefMayor from './vistas/TelefMayor';
+import ContactoFormu from './vistas/ContactoFormu';
 import MiBienestar from './vistas/MiBienestar';
 
 const Stack = createNativeStackNavigator();
@@ -26,8 +25,8 @@ export default function App() {
         <Stack.Screen name="MiBienestar" component={MiBienestar} />
         <Stack.Screen name="RecuperarContrasena" component={RecuperarContrasena} />
         <Stack.Screen name="Mapa" component={Mapa} />
-        <Stack.Screen name="contactoformu" component={contactoformu}/>
-        <Stack.Screen name="telefmayor" component={telefMayor}/>
+        <Stack.Screen name="ContactoFormu" component={ContactoFormu}/>
+        <Stack.Screen name="TelefMayor" component={TelefMayor}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

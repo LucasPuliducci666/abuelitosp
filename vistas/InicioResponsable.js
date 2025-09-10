@@ -1,4 +1,4 @@
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
 import BotonGeneral from '../componentes/BotonGeneral';
 import telImage from '../imagenes/telefono.png'; 
 import mapImage from '../imagenes/mapa.png'; 
@@ -11,6 +11,5 @@ export default function InicioMayor() {
       <BotonGeneral titulo="Mapa" imageSource={mapImage} to="Mapa" />
       <BotonGeneral titulo="Alarma" imageSource={alarmImage} to="" />
     </View>
-    
   );
 }

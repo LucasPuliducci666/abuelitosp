@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import InputField from '../componentes/InputField';
 
