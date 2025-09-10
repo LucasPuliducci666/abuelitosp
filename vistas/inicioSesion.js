@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import InputField from '../componentes/InputField';
 
 
-export default function inicioSecion({ navigation }) {
+export default function InicioSesion({ navigation }) {
   const [email, setEmail] = useState('');
   const [contrasena, setContrasena] = useState('');
 
