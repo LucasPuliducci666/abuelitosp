@@ -8,7 +8,7 @@ export default function InicioMayor() {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       <BotonGeneral titulo="Telefono" imageSource={telImage} to="miBienestar" />
-      <BotonGeneral titulo="Mapa" imageSource={mapImage} to="" />
+      <BotonGeneral titulo="Mapa" imageSource={mapImage} to="Mapa" />
       <BotonGeneral titulo="Alarma" imageSource={alarmImage} to="" />
     </View>
     
