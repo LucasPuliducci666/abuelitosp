@@ -9,6 +9,9 @@ import InicioMayor from './vistas/InicioMayor';
 import InicioResponsable from './vistas/InicioResponsable';
 import MiBienestar from './vistas/MiBienestar';
 import Mapa from './vistas/Mapa';
+import telefMayor from './vistas/telefmayor';
+import contactoformu from './vistas/contactoformu';
+import MiBienestar from './vistas/MiBienestar';
 
 const Stack = createNativeStackNavigator();
 
@@ -16,13 +19,15 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="inicioSesion">
-        <Stack.Screen name="inicioSesion" component={InicioSesion} />
-        <Stack.Screen name="registroUsuario" component={RegistroUsuario} />
+        <Stack.Screen name="InicioSesion" component={InicioSesion} />
+        <Stack.Screen name="RegistroUsuario" component={RegistroUsuario} />
         <Stack.Screen name="InicioMayor" component={InicioMayor} />
         <Stack.Screen name="InicioResponsable" component={InicioResponsable} />
-        <Stack.Screen name="miBienestar" component={MiBienestar} />
+        <Stack.Screen name="MiBienestar" component={MiBienestar} />
         <Stack.Screen name="RecuperarContrasena" component={RecuperarContrasena} />
         <Stack.Screen name="Mapa" component={Mapa} />
+        <Stack.Screen name="contactoformu" component={contactoformu}/>
+        <Stack.Screen name="telefmayor" component={telefMayor}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

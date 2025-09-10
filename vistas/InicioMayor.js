@@ -8,6 +8,7 @@ export default function InicioMayor() {
       <BotonGeneral titulo="Mi Bienestar" imageSource={arrowImage} to="miBienestar" />
       <BotonGeneral titulo="Telefono" imageSource={arrowImage} to="" />
       <BotonGeneral titulo="Inicio Resp" imageSource={arrowImage} to="InicioResponsable" />
+      <BotonGeneral titulo="Telefono" imageSource={arrowImage} to="telefmayor" />
     </View>
     
   );

@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
     paddingVertical: 12,
     fontSize: 16,
-    elevation: 3, // sombra sutil como en tu diseño
+    elevation: 3, 
     shadowColor: '#000',
     shadowOffset: { width: 1, height: 2 },
     shadowOpacity: 0.2,
