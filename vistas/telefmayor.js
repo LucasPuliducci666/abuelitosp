@@ -7,7 +7,7 @@ export default function TelefMayor() {
   return (
     <View >
         <Contacto texto="gordo"> </Contacto>
-        <BotonGeneral titulo="Agregar contacto" imageSource={arrowImage} to="contactoformu" />
+        <BotonGeneral titulo="Agregar contacto" imageSource={arrowImage} to="ContactoFormu" />
     </View>
   );
 }

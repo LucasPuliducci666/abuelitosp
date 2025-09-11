@@ -10,14 +10,13 @@ import MiBienestar from './vistas/MiBienestar';
 import Mapa from './vistas/Mapa';
 import TelefMayor from './vistas/TelefMayor';
 import ContactoFormu from './vistas/ContactoFormu';
-import MiBienestar from './vistas/MiBienestar';
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="inicioSesion">
+      <Stack.Navigator initialRouteName="InicioSesion">
         <Stack.Screen name="InicioSesion" component={InicioSesion} />
         <Stack.Screen name="RegistroUsuario" component={RegistroUsuario} />
         <Stack.Screen name="InicioMayor" component={InicioMayor} />

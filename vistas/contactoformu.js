@@ -1,8 +1,9 @@
+import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import InputField from '../componentes/InputField';
 
 
-export default function inicioSesion({ navigation }) {
+export default function ContactoFormu({ navigation }) {
   const [nombre, setNombre] = useState('');
   const [apellido, setApellido] = useState('');
   const [telefono, setTelefono] = useState('');
