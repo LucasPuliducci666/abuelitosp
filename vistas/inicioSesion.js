@@ -10,10 +10,14 @@ export default function InicioSesion({ navigation }) {
 
   
   const handleLogin = () => {
-    if (email && contrasena) {
+    if (email=='mayor' && contrasena=='mayor') {
       navigation.navigate('InicioMayor');
-    } else {
+    } else if(email=='resp' && contrasena=='resp'){
+      navigation.navigate('InicioResponsable');
+    } else if(email=='' || contrasena==''){
       alert('Por favor completá todos los campos');
+    }else {
+      alert('Contraseña invalida');
     }
   };
 
