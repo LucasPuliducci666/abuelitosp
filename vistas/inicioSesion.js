@@ -47,7 +47,7 @@ export default function InicioSesion({ navigation }) {
         <Text style={styles.buttonText}>Iniciar</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity onPress={() => navigation.navigate('registroUsuario')}>
+      <TouchableOpacity onPress={() => navigation.navigate('RegistroUsuario')}>
   <Text style={styles.register}>
     ¿No tenés cuenta? <Text style={{ textDecorationLine: 'underline' }}>Registrate</Text>
   </Text>

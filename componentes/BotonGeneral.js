@@ -1,5 +1,5 @@
 import React from 'react';
-import { TouchableOpacity, Image, StyleSheet, Text} from 'react-native';
+import { TouchableOpacity, Image, StyleSheet, Text } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 const BotonGeneral = ({ titulo, imageSource, goBack = false, to = null }) => {
@@ -14,33 +14,38 @@ const BotonGeneral = ({ titulo, imageSource, goBack = false, to = null }) => {
   };
 
   return (
-    <TouchableOpacity onPress={handlePress} style={[styles.button, {}]}>
-      <Text style={styles.texto}>{titulo}</Text>
+    <TouchableOpacity onPress={handlePress} style={styles.button}>
       <Image source={imageSource} style={styles.image} resizeMode="contain" />
+      <Text style={styles.texto}>{titulo}</Text>
     </TouchableOpacity>
   );
 };
 
 const styles = StyleSheet.create({
   button: {
-    width: '38%',
-    height: '20%',
+    width: '40%',
+    height: 140,
     backgroundColor: '#AD54E0',
-    borderRadius: 10,
-    paddingVertical: 30,
-    paddingHorizontal: 10,
+    borderRadius: 16,
+    paddingVertical: 20,
+    paddingHorizontal: 15,
     justifyContent: 'center',
     alignItems: 'center',
-    marginBottom: 50,
+    marginBottom: 40,
+    marginHorizontal: 15,
+
   },
   image: {
-    margin: 5,
-    width: '100%',
-    height: '100%',
+    width: 70,
+    height: 70,
+    marginBottom: 10,
   },
   texto: {
-    fontSize: 18,
-  }
+    fontSize: 16,
+    fontWeight: '600',
+    color: '#fff',
+    textAlign: 'center',
+  },
 });
 
 export default BotonGeneral;

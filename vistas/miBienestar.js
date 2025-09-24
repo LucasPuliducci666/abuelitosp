@@ -6,7 +6,7 @@ export default function MiBienestar() {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center' }}>
-        <BotonGeneral style={{}} titulo="Necesito medicacion" imageSource={abuImage} to="" />
+        <BotonGeneral style={{}} titulo="Necesito medicación" imageSource={abuImage} to="" />
         <BotonGeneral style={{}} titulo="Necesito compañia" imageSource={abuImage} to="" />
       </View>
       <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center' }}>
