@@ -7,7 +7,7 @@ import alarmImage from '../imagenes/alarma.png';
 export default function InicioResponsable() {
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <BotonGeneral titulo="Telefono" imageSource={telImage} to="MiBienestar" />
+      <BotonGeneral titulo="Telefono" imageSource={telImage} to="TelefResp" />
       <BotonGeneral titulo="Mapa" imageSource={mapImage} to="Mapa" />
       <BotonGeneral titulo="Alarma" imageSource={alarmImage} to="" />
     </View>

@@ -9,6 +9,7 @@ import InicioResponsable from './vistas/InicioResponsable';
 import MiBienestar from './vistas/MiBienestar';
 import Mapa from './vistas/Mapa';
 import TelefMayor from './vistas/TelefMayor';
+import TelefResp from './vistas/TelefResp';
 import ContactoFormu from './vistas/ContactoFormu';
 
 const Stack = createNativeStackNavigator();
@@ -26,6 +27,7 @@ export default function App() {
         <Stack.Screen name="Mapa" component={Mapa} />
         <Stack.Screen name="ContactoFormu" component={ContactoFormu}/>
         <Stack.Screen name="TelefMayor" component={TelefMayor}/>
+        <Stack.Screen name="TelefResp" component={TelefResp}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
