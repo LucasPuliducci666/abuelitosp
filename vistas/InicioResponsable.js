@@ -57,7 +57,7 @@ export default function InicioResponsable() {
   // 🔹 UI
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <BotonGeneral titulo="Telefono" imageSource={telImage} to="MiBienestar" />
+      <BotonGeneral titulo="Telefono" imageSource={telImage} to="TelefResp" />
       <BotonGeneral titulo="Mapa" imageSource={mapImage} to="Mapa" />
       <BotonGeneral 
         titulo={isPlaying ? "Detener Alarma" : "Alarma"} 
