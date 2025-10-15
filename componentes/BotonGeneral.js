@@ -2,10 +2,13 @@ import React from 'react';
 import { TouchableOpacity, Image, StyleSheet, Text } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-const BotonGeneral = ({ titulo, imageSource, goBack = false, to = null }) => {
+const BotonGeneral = ({ titulo, imageSource, goBack = false, to = null, onPress }) => {
   const navigation = useNavigation();
 
   const handlePress = () => {
+    if (onPress) {
+      onPress(); // ejecuta la acción personalizada (ej. reproducir sonido)
+    }
     if (goBack) {
       navigation.goBack();
     } else if (to) {
@@ -33,7 +36,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 40,
     marginHorizontal: 15,
-
   },
   image: {
     width: 70,
