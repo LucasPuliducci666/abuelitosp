@@ -11,9 +11,9 @@ export default function InicioSesion({ navigation }) {
   
   const handleLogin = () => {
     if (email=='mayor' && contrasena=='mayor') {
-      navigation.navigate('InicioMayor');
+      navigation.navigate('Main', { screen: 'InicioMayor' });
     } else if(email=='resp' && contrasena=='resp'){
-      navigation.navigate('InicioResponsable');
+      navigation.navigate('Main', { screen: 'InicioResponsable' });
     } else if(email=='' || contrasena==''){
       alert('Por favor completá todos los campos');
     }else {

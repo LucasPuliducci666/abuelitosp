@@ -12,30 +12,51 @@ import TelefMayor from './vistas/TelefMayor';
 import TelefResp from './vistas/TelefResp';
 import ContactoFormu from './vistas/ContactoFormu';
 import Notificaciones from './vistas/Notificaciones';
+import Header from './componentes/Header'; // Importa tu componente Header
 
+const AuthStack = createNativeStackNavigator();
+const MainStack = createNativeStackNavigator();
 
-const Stack = createNativeStackNavigator();
+function MainStackScreen() {
+  return (
+    <MainStack.Navigator
+      initialRouteName="InicioMayor"
+      screenOptions={{
+        header: ({ route, options }) => {
+          const title =
+            options.headerTitle !== undefined
+              ? options.headerTitle
+              : options.title !== undefined
+              ? options.title
+              : route.name;
+          return <Header titulo={title} />;
+        },
+      }}
+    >
+      <MainStack.Screen name="InicioMayor" component={InicioMayor} options={{ title: 'Inicio' }} />
+      <MainStack.Screen name="InicioResponsable" component={InicioResponsable} options={{ title: 'Inicio' }} />
+      <MainStack.Screen name="MiBienestar" component={MiBienestar} options={{ title: 'Mi Bienestar' }} />
+      <MainStack.Screen name="Mapa" component={Mapa} options={{ title: 'Mapa' }} />
+      <MainStack.Screen name="ContactoFormu" component={ContactoFormu} options={{ title: 'Contacto' }} />
+      <MainStack.Screen name="TelefMayor" component={TelefMayor} options={{ title: 'Teléfono' }} />
+      <MainStack.Screen name="TelefResp" component={TelefResp} options={{ title: 'Teléfono' }} />
+      <MainStack.Screen name="Notificaciones" component={Notificaciones} options={{ title: 'Notificaciones' }} />
+    </MainStack.Navigator>
+  );
+}
 
 export default function App() {
   return (
     <NavigationContainer>
-  <Stack.Navigator 
-    initialRouteName="InicioSesion"
-    screenOptions={{ headerShown: false }}
-  >
-    <Stack.Screen name="InicioSesion" component={InicioSesion} />
-    <Stack.Screen name="RegistroUsuario" component={RegistroUsuario} />
-    <Stack.Screen name="InicioMayor" component={InicioMayor} />
-    <Stack.Screen name="InicioResponsable" component={InicioResponsable} />
-    <Stack.Screen name="MiBienestar" component={MiBienestar} />
-    <Stack.Screen name="RecuperarContrasena" component={RecuperarContrasena} />
-    <Stack.Screen name="Mapa" component={Mapa} />
-    <Stack.Screen name="ContactoFormu" component={ContactoFormu} />
-    <Stack.Screen name="TelefMayor" component={TelefMayor} />
-    <Stack.Screen name="TelefResp" component={TelefResp} />
-    <Stack.Screen name="Notificaciones" component={Notificaciones} />
-  </Stack.Navigator>
-</NavigationContainer>
-
+      <AuthStack.Navigator
+        initialRouteName="InicioSesion"
+        screenOptions={{ headerShown: false }}
+      >
+        <AuthStack.Screen name="InicioSesion" component={InicioSesion} />
+        <AuthStack.Screen name="RegistroUsuario" component={RegistroUsuario} />
+        <AuthStack.Screen name="RecuperarContrasena" component={RecuperarContrasena} />
+        <AuthStack.Screen name="Main" component={MainStackScreen} />
+      </AuthStack.Navigator>
+    </NavigationContainer>
   );
 }

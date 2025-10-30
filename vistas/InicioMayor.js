@@ -2,6 +2,7 @@ import { View } from 'react-native';
 import BotonGeneral from '../componentes/BotonGeneral';
 import TelefMayor from '../imagenes/telefono.png';
 import MiBienestar from '../imagenes/abuelito.png';
+import Header from '../componentes/Header' 
 
 export default function InicioMayor() {
   return (
