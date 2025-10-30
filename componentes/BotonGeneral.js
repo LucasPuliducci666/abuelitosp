@@ -2,7 +2,7 @@ import React from 'react';
 import { TouchableOpacity, Image, StyleSheet, Text } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-const BotonGeneral = ({ titulo, imageSource, goBack = false, to = null, onPress }) => {
+const BotonGeneral = ({ titulo, imageSource, goBack = false, to = null, onPress, params = {} }) => {
   const navigation = useNavigation();
 
   const handlePress = () => {
@@ -12,7 +12,7 @@ const BotonGeneral = ({ titulo, imageSource, goBack = false, to = null, onPress 
     if (goBack) {
       navigation.goBack();
     } else if (to) {
-      navigation.navigate(to);
+      navigation.navigate(to, params); // ← se agregan los parámetros aquí
     }
   };
 

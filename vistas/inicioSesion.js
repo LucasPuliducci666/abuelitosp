@@ -16,7 +16,7 @@ export default function InicioSesion({ navigation }) {
     }
 
     try {
-      const response = await fetch('http://tu_ip_putita:3000/api/login', {
+      const response = await fetch('http://192.168.0.162:3000/api/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -33,10 +33,17 @@ export default function InicioSesion({ navigation }) {
       }
 
       const tokenData = JSON.parse(atob(data.token.split('.')[1]));
+
+      const params = { 
+        id_usuario: tokenData.id, 
+        email: tokenData.email, 
+        isResp: tokenData.isResp 
+      };
+
       if (tokenData.isResp) {
-        navigation.navigate('Main', { screen: 'InicioResponsable' });
+        navigation.navigate('Main', { screen: 'InicioResponsable', params });
       } else {
-        navigation.navigate('Main', { screen: 'InicioMayor' });
+        navigation.navigate('Main', { screen: 'InicioMayor', params });
       }
 
     } catch (error) {
