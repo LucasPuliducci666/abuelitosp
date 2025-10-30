@@ -28,7 +28,7 @@ export default function Notificaciones() {
   // Marcar alerta como leída
   const marcarLeida = async (id) => {
     try {
-      const response = await fetch(`http://192.168.0.162:3000/api/alertas/${id}`, {
+      const response = await fetch(`http://10.0.8.46:3000/api/alertas/${id}`, {
         method: 'PUT',
       });
 

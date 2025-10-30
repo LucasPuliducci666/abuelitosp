@@ -14,7 +14,7 @@ export default function MiBienestar({ route }) {
     }
 
     try {
-      const response = await fetch('http://192.168.0.162:3000/api/alertas', {
+      const response = await fetch('http://10.0.8.46:3000/api/alertas', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ id_usuario, mensaje })

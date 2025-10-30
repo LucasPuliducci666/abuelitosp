@@ -16,7 +16,7 @@ export default function InicioSesion({ navigation }) {
     }
 
     try {
-      const response = await fetch('http://192.168.0.162:3000/api/login', {
+      const response = await fetch('http://10.0.8.46:3000/api/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
