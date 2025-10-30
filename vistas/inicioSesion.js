@@ -9,17 +9,42 @@ export default function InicioSesion({ navigation }) {
 
 
   
-  const handleLogin = () => {
-    if (email=='mayor' && contrasena=='mayor') {
-      navigation.navigate('Main', { screen: 'InicioMayor' });
-    } else if(email=='resp' && contrasena=='resp'){
-      navigation.navigate('Main', { screen: 'InicioResponsable' });
-    } else if(email=='' || contrasena==''){
+  const handleLogin = async () => {
+    if (!email || !contrasena) {
       alert('Por favor completá todos los campos');
-    }else {
-      alert('Contraseña invalida');
+      return;
+    }
+
+    try {
+      const response = await fetch('http://localhost:3000/api/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email,
+          password: contrasena
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        alert(data.message || 'Error al iniciar sesión');
+        return;
+      }
+      
+      const tokenData = JSON.parse(atob(data.token.split('.')[1]));
+      if (tokenData.isResp) {
+        navigation.navigate('Main', { screen: 'InicioResponsable' });
+      } else {
+        navigation.navigate('Main', { screen: 'InicioMayor' });
+      }
+
+    } catch (error) {
+      console.error(error);
+      alert('No se pudo conectar con el servidor');
     }
   };
+
 
   return (
     <View style={styles.container}>
