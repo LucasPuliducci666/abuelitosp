@@ -16,7 +16,7 @@ export default function InicioSesion({ navigation }) {
     }
 
     try {
-      const response = await fetch('http://localhost:3000/api/login', {
+      const response = await fetch('http://tu_ip_putita:3000/api/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -31,7 +31,7 @@ export default function InicioSesion({ navigation }) {
         alert(data.message || 'Error al iniciar sesión');
         return;
       }
-      
+
       const tokenData = JSON.parse(atob(data.token.split('.')[1]));
       if (tokenData.isResp) {
         navigation.navigate('Main', { screen: 'InicioResponsable' });

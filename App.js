@@ -12,7 +12,7 @@ import TelefMayor from './vistas/TelefMayor';
 import TelefResp from './vistas/TelefResp';
 import ContactoFormu from './vistas/ContactoFormu';
 import Notificaciones from './vistas/Notificaciones';
-import Header from './componentes/Header'; // Importa tu componente Header
+import Header from './componentes/Header';
 
 const AuthStack = createNativeStackNavigator();
 const MainStack = createNativeStackNavigator();
