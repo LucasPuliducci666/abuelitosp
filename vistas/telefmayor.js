@@ -1,13 +1,10 @@
 import { View } from 'react-native';
 import Contacto from '../componentes/Contacto';
-import BotonGeneral from '../componentes/BotonGeneral';
-import arrowImage from '../imagenes/telefono.png';
 
 export default function TelefMayor() {
   return (
     <View >
-        <Contacto texto="gordo"> </Contacto>
-        
+        <Contacto texto="Juan Riquelme"> </Contacto>
     </View>
   );
 }

@@ -21,26 +21,66 @@ function MainStackScreen() {
   return (
     <MainStack.Navigator
       initialRouteName="InicioMayor"
-      screenOptions={{
-        header: ({ route, options }) => {
-          const title =
-            options.headerTitle !== undefined
-              ? options.headerTitle
-              : options.title !== undefined
-              ? options.title
-              : route.name;
-          return <Header titulo={title} />;
-        },
+      screenOptions={({ route, options }) => {
+        const title =
+          options?.headerTitle ??
+          options?.title ??
+          route.name;
+
+        // Pantallas del responsable
+        const esResponsable = [
+          'InicioResponsable',
+          'TelefResp',
+          'Mapa',
+          'Notificaciones',
+        ].includes(route.name);
+
+        // Retornamos un OBJETO, no un JSX
+        return {
+          header: () => <Header titulo={title} isResp={esResponsable} />,
+        };
       }}
     >
-      <MainStack.Screen name="InicioMayor" component={InicioMayor} options={{ title: 'Inicio' }} />
-      <MainStack.Screen name="InicioResponsable" component={InicioResponsable} options={{ title: 'Inicio' }} />
-      <MainStack.Screen name="MiBienestar" component={MiBienestar} options={{ title: 'Mi Bienestar' }} />
-      <MainStack.Screen name="Mapa" component={Mapa} options={{ title: 'Mapa' }} />
-      <MainStack.Screen name="ContactoFormu" component={ContactoFormu} options={{ title: 'Contacto' }} />
-      <MainStack.Screen name="TelefMayor" component={TelefMayor} options={{ title: 'Teléfono' }} />
-      <MainStack.Screen name="TelefResp" component={TelefResp} options={{ title: 'Teléfono' }} />
-      <MainStack.Screen name="Notificaciones" component={Notificaciones} options={{ title: 'Notificaciones' }} />
+      <MainStack.Screen
+        name="InicioMayor"
+        component={InicioMayor}
+        options={{ title: 'Inicio' }}
+      />
+      <MainStack.Screen
+        name="InicioResponsable"
+        component={InicioResponsable}
+        options={{ title: 'Inicio' }}
+      />
+      <MainStack.Screen
+        name="MiBienestar"
+        component={MiBienestar}
+        options={{ title: 'Mi Bienestar' }}
+      />
+      <MainStack.Screen
+        name="Mapa"
+        component={Mapa}
+        options={{ title: 'Mapa' }}
+      />
+      <MainStack.Screen
+        name="ContactoFormu"
+        component={ContactoFormu}
+        options={{ title: 'Contacto' }}
+      />
+      <MainStack.Screen
+        name="TelefMayor"
+        component={TelefMayor}
+        options={{ title: 'Teléfono' }}
+      />
+      <MainStack.Screen
+        name="TelefResp"
+        component={TelefResp}
+        options={{ title: 'Teléfono' }}
+      />
+      <MainStack.Screen
+        name="Notificaciones"
+        component={Notificaciones}
+        options={{ title: 'Notificaciones' }}
+      />
     </MainStack.Navigator>
   );
 }
@@ -54,7 +94,10 @@ export default function App() {
       >
         <AuthStack.Screen name="InicioSesion" component={InicioSesion} />
         <AuthStack.Screen name="RegistroUsuario" component={RegistroUsuario} />
-        <AuthStack.Screen name="RecuperarContrasena" component={RecuperarContrasena} />
+        <AuthStack.Screen
+          name="RecuperarContrasena"
+          component={RecuperarContrasena}
+        />
         <AuthStack.Screen name="Main" component={MainStackScreen} />
       </AuthStack.Navigator>
     </NavigationContainer>

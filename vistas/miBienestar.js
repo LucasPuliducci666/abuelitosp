@@ -1,19 +1,49 @@
-import { View, Text } from 'react-native';
+import React from 'react';
+import { View, Alert } from 'react-native';
 import BotonGeneral from '../componentes/BotonGeneral';
 import abuImage from '../imagenes/abuelito.png'; 
+import { API_URL } from '../apiconfig.js'
 
-export default function MiBienestar() {
+export default function MiBienestar({ route }) {
+  const { id_usuario } = route.params || {}; // se espera recibir el id desde el login
+
+  const enviarAlerta = async (mensaje) => {
+    
+    if (!id_usuario) {
+      Alert.alert('Error', 'No se encontró el usuario');
+      return;
+    }
+
+    try {
+      const response = await fetch(`${API_URL}/api/alertas`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id_usuario, mensaje })
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        Alert.alert('Enviado', 'Tu alerta fue enviada correctamente');
+      } else {
+        Alert.alert('Error', data.message || 'No se pudo enviar la alerta');
+      }
+    } catch (error) {
+      console.error(error);
+      Alert.alert('Error', 'No se pudo conectar con el servidor');
+    }
+  };
+
   return (
     <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center' }}>
-        <BotonGeneral style={{}} titulo="Necesito medicación" imageSource={abuImage} to="" />
-        <BotonGeneral style={{}} titulo="Necesito compañia" imageSource={abuImage} to="" />
+      <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center' }}>
+        <BotonGeneral titulo="Necesito medicación" imageSource={abuImage} onPress={() => enviarAlerta('Necesito medicación')} />
+        <BotonGeneral titulo="Necesito compañía" imageSource={abuImage} onPress={() => enviarAlerta('Necesito compañía')} />
       </View>
-      <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center' }}>
-        <BotonGeneral titulo="Me siento mal" imageSource={abuImage} to="" />
-        <BotonGeneral titulo="Tuve un accidente" imageSource={abuImage} to="" />
+      <View style={{ flex: 1, flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center' }}>
+        <BotonGeneral titulo="Me siento mal" imageSource={abuImage} onPress={() => enviarAlerta('Me siento mal')} />
+        <BotonGeneral titulo="Tuve un accidente" imageSource={abuImage} onPress={() => enviarAlerta('Tuve un accidente')} />
       </View>
     </View>
   );
 }
-    
