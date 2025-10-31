@@ -5,19 +5,18 @@ import BotonGeneral from '../componentes/BotonGeneral';
 import TelefMayor from '../imagenes/telefono.png';
 import MiBienestar from '../imagenes/abuelito.png';
 import alarmImage from '../imagenes/alarma.png';
-import Header from '../componentes/Header';
 import ringtone from '../assets/ringtone.mp3';
+import { API_URL } from '../apiconfig.js';
 
 export default function InicioMayor({ route }) {
   const { id_usuario } = route.params || {};
   const [isPlaying, setIsPlaying] = useState(false);
-  const soundRef = useRef(new Audio.Sound());
-  const RESPONSABLE_ID = 1; // ID fijo del adulto responsable
-  const API_URL = `http://192.168.0.162:3000/api/usuarios/${RESPONSABLE_ID}/sonar`;
+  const soundRef = useRef(null);
+  const RESPONSABLE_ID = 1;
 
-  // 🔹 Configurar sonido y empezar a escuchar cambios
   useEffect(() => {
     let interval;
+    let isMounted = true;
 
     const init = async () => {
       try {
@@ -28,10 +27,15 @@ export default function InicioMayor({ route }) {
           shouldDuckAndroid: false,
         });
 
-        await soundRef.current.loadAsync(ringtone, { isLooping: true });
+        const sound = new Audio.Sound();
+        await sound.loadAsync(ringtone, { isLooping: true });
+        soundRef.current = sound;
 
-        // Inicia la verificación periódica
-        interval = setInterval(checkSonido, 3000);
+        interval = setInterval(() => {
+          if (isMounted) checkSonido();
+        }, 5000);
+
+        checkSonido();
       } catch (error) {
         console.log('Error iniciando sonido:', error);
       }
@@ -40,21 +44,22 @@ export default function InicioMayor({ route }) {
     init();
 
     return () => {
+      isMounted = false;
       clearInterval(interval);
-      soundRef.current.unloadAsync();
+      if (soundRef.current) soundRef.current.unloadAsync();
     };
   }, []);
 
-  // 🔹 Consultar el estado del responsable
   const checkSonido = async () => {
     try {
-      const res = await fetch(API_URL);
+      const res = await fetch(`${API_URL}/api/usuarios/${RESPONSABLE_ID}/sonar`);
       const data = await res.json();
 
       if (data.isSonando && !isPlaying) {
         await soundRef.current.playFromPositionAsync(0);
         setIsPlaying(true);
-      } else if (!data.isSonando && isPlaying) {
+      }
+      else if (!data.isSonando && isPlaying) {
         await soundRef.current.pauseAsync();
         setIsPlaying(false);
       }
@@ -63,11 +68,18 @@ export default function InicioMayor({ route }) {
     }
   };
 
-  // 🔹 Botón para detener manualmente el sonido
   const stopSound = async () => {
     try {
       await soundRef.current.pauseAsync();
       setIsPlaying(false);
+
+      await fetch(`${API_URL}/api/usuarios/${RESPONSABLE_ID}/sonar`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ isSonando: false }),
+      });
+
+      console.log('Alarma detenida manualmente y campo actualizado');
     } catch (error) {
       console.log('Error deteniendo sonido:', error);
     }

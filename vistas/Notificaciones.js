@@ -1,21 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, FlatList, Alert } from 'react-native';
+import { API_URL } from '../apiconfig.js';
 
 export default function Notificaciones() {
   const [alertas, setAlertas] = useState([]);
 
-  // Obtener todas las alertas no leídas
   const obtenerAlertas = async () => {
     try {
-      const response = await fetch('http://192.168.0.162:3000/api/alertas'); // 🔹 Endpoint general
+      const response = await fetch(`${API_URL}/api/alertas`);
       const data = await response.json();
 
       if (response.ok) {
-        // 🔹 Filtra por no leídas en caso de que el backend devuelva todas
-        const alertasNoLeidas = data.filter(
-          (a) => a.leida === 0 || a.leida === false || a.leida === null
-        );
-        setAlertas(alertasNoLeidas);
+        setAlertas(data);
       } else {
         Alert.alert('Error', data.message || 'No se pudieron obtener las alertas');
       }
@@ -25,17 +21,14 @@ export default function Notificaciones() {
     }
   };
 
-  // Marcar alerta como leída
   const marcarLeida = async (id) => {
     try {
-      const response = await fetch(`http://10.0.8.46:3000/api/alertas/${id}`, {
+      const response = await fetch(`${API_URL}/api/alertas/${id}`, {
         method: 'PUT',
       });
 
       if (response.ok) {
-        // 🔹 Elimina la alerta de la lista local
         setAlertas((prevAlertas) => prevAlertas.filter((a) => a.id !== id));
-        Alert.alert('Listo', 'Alerta marcada como leída');
       } else {
         Alert.alert('Error', 'No se pudo marcar como leída');
       }
@@ -47,6 +40,8 @@ export default function Notificaciones() {
 
   useEffect(() => {
     obtenerAlertas();
+    const interval = setInterval(obtenerAlertas, 5000);
+    return () => clearInterval(interval);
   }, []);
 
   return (

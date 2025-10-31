@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Switch } from 'react-native';
 import InputField from '../componentes/InputField';
+import { API_URL } from '../apiconfig.js'
 
 export default function RegistroUsuario({ navigation }) {
   const [nombre, setNombre] = useState('');
@@ -15,7 +16,7 @@ export default function RegistroUsuario({ navigation }) {
     }
 
     try {
-      const response = await fetch('http://10.0.8.46:3000/api/usuarios', {
+      const response = await fetch(`${API_URL}/api/usuarios`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

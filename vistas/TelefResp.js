@@ -6,7 +6,7 @@ import arrowImage from '../imagenes/telefono.png';
 export default function TelefMayor() {
   return (
 <View>
-  <Contacto texto="gordo" />
+  <Contacto texto="Juan Riquelme" />
   <View style={{ height: 100 }} />
 
   <View style={{ alignItems: "center" }}>

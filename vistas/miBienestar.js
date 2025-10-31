@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Alert } from 'react-native';
 import BotonGeneral from '../componentes/BotonGeneral';
 import abuImage from '../imagenes/abuelito.png'; 
+import { API_URL } from '../apiconfig.js'
 
 export default function MiBienestar({ route }) {
   const { id_usuario } = route.params || {}; // se espera recibir el id desde el login
@@ -14,7 +15,7 @@ export default function MiBienestar({ route }) {
     }
 
     try {
-      const response = await fetch('http://10.0.8.46:3000/api/alertas', {
+      const response = await fetch(`${API_URL}/api/alertas`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ id_usuario, mensaje })

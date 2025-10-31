@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import InputField from '../componentes/InputField';
-
+import { API_URL } from '../apiconfig.js'
 
 export default function InicioSesion({ navigation }) {
   const [email, setEmail] = useState('');
@@ -16,7 +16,7 @@ export default function InicioSesion({ navigation }) {
     }
 
     try {
-      const response = await fetch('http://10.0.8.46:3000/api/login', {
+      const response = await fetch(`${API_URL}/api/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
